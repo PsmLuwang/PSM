@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <title>Stone-Paper-Scissore</title>
+
+    <style>
+        body {
+            background-color: #feea63;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: arial;
+        }
+        .logo {
+            height: 100px;
+            border-radius: 50%;
+        }
+        .move_icon {
+            height: 50%;
+        }
+        button {
+            background-color: transparent;
+            border: 3px solid white;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+        button:active {
+            border: 3px solid darkgreen;
+            background-color: #29b200;
+        }
+        .compare_box {
+            margin-block: 70px;
+            height: 220px;
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+        }
+        .compare_sub_box {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+            height: 90px;
+
+        }
+        .vs_box {
+            height: 190px;
+            width: 150px
+        }
+        .you_system {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        .you_system div {
+            width: 130px;
+        }
+        .you {
+            text-align: right;
+            padding-right: 70px;
+        }
+        .system {
+            text-align: left;
+            padding-left: 70px;
+        }
+    </style>
+</head>
+
+
+
+<html>
+    <center>
+        <body>
+            <img class="logo" src="images/logo.jpg">
+            <p>Stone Vs Paper Vs Scissore</p>
+            
+            <p></p>
+            <div class="compare_box">
+                <p class="resultDisplay">RESULT</p>
+                <div class="compare_sub_box">
+                    <div class="vs_box compare_icon1">
+                        <img class="move_icon" src="images/PAPER-icon.png">
+                    </div>
+                    <h2>Vs</h2>
+                    <div class="vs_box compare_icon2">
+                        <img class="move_icon" src="images/PAPER-icon.png">
+                    </div>
+                </div>
+                <div class="you_system">
+                    <div class="you"><p>You</p></div>
+                    <div class="system"><p>System</p></div>
+                </div>
+            </div>
+
+            <button onclick="playerMoves('STONE');"><img class="move_icon" src="images/STONE-icon.png"><br>STONE</button>
+            <button onclick="playerMoves('PAPER');"><img class="move_icon" src="images/PAPER-icon.png"><br>PAPER</button>
+            <button onclick="playerMoves('SCISSORE');"><img class="move_icon" src="images/SCISSORE-icon.png"><br>SCISSORE</button>
+        </body>
+    </center>
+    
+
+
+    <script>
+        //computer moves function
+        function systeMoves() {
+            const x = Math.random();
+            let system = '';
+            if (x >= 0 && x < 1/3) {
+                system = 'STONE';
+            } else if (x >= 1/3 && x < 2/3) {
+                system = 'PAPER';
+            } else if (x >= 2/3 && x < 1) {
+                system = 'SCISSORE';
+            }
+            return system;
+        }
+
+        //onclick function
+        function playerMoves(choose) {
+
+            //computer moves function call
+            const system = systeMoves();
+
+            //compare our moves & computer moves:
+
+            //run this if player choose stone
+            if (choose === 'STONE') {
+                if (system === 'STONE') {
+                    result = 'DRAW';
+                } else if (system === 'PAPER') {
+                    result = 'YOU LOSE';
+                } else if (system === 'SCISSORE') {
+                    result = 'YOU WIN';
+                }
+            }
+
+            //run this if player choose paper
+            else if (choose === 'PAPER') {
+                if (system === 'STONE') {
+                    result = 'YOU WIN';
+                } else if (system === 'PAPER') {
+                    result = 'DRAW';
+                } else if (system === 'SCISSORE') {
+                    result = 'YOU LOSE';
+                }
+            }
+
+            //run this if player choose scissore
+            else if (choose === 'SCISSORE') {
+                if (system === 'STONE') {
+                    result = 'YOU LOSE';
+                } else if (system === 'PAPER') {
+                    result = 'YOU WIN';
+                } else if (system === 'SCISSORE') {
+                    result = 'DRAW';
+                }
+            }
+
+            document.querySelector('.resultDisplay').innerHTML = `${result}`;
+            document.querySelector('.compare_icon1').innerHTML = `<img class="move_icon" src="images/${choose}-icon.png">`;
+            document.querySelector('.compare_icon2').innerHTML = `<img class="move_icon" src="images/${system}-icon.png">`;       
+        }
+    </script>
+</html>
