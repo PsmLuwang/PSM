@@ -44,6 +44,32 @@
             height: 90px;
 
         }
+
+        .aslide1 {
+            position: relative;
+            animation: you_slide 0.8s;
+            
+        }
+        @keyframes you_slide {
+                0%{
+                    left: -100px;
+                }
+                100%{
+                    left: 0px;
+                }
+        }
+        .aslide2 {
+            position: relative;
+            animation: system_slide 0.8s;
+        }
+        @keyframes system_slide {
+                0%{
+                    right: -100px;
+                }
+                100%{
+                    right: 0px;
+                }
+        }
         .vs_box {
             height: 190px;
             width: 150px
@@ -80,11 +106,11 @@
                 <p class="resultDisplay">RESULT</p>
                 <div class="compare_sub_box">
                     <div class="vs_box compare_icon1">
-                        <img class="move_icon" src="images/PAPER-icon.png">
+                        <img class="move_icon1" src="images/PAPER-icon.png">
                     </div>
                     <h2>Vs</h2>
                     <div class="vs_box compare_icon2">
-                        <img class="move_icon" src="images/PAPER-icon.png">
+                        <img class="move_icon2" src="images/PAPER-icon.png">
                     </div>
                 </div>
                 <div class="you_system">
