@@ -158,8 +158,22 @@
             }
 
             document.querySelector('.resultDisplay').innerHTML = `${result}`;
-            document.querySelector('.compare_icon1').innerHTML = `<img class="move_icon" src="images/${choose}-icon.png">`;
-            document.querySelector('.compare_icon2').innerHTML = `<img class="move_icon" src="images/${system}-icon.png">`;       
+            document.querySelector('.compare_icon1').innerHTML = `<img class="move_icon1" src="images/${choose}-icon.png">`;
+            document.querySelector('.compare_icon2').innerHTML = `<img class="move_icon2" src="images/${system}-icon.png">`; 
+            animationSlide();
+        }
+        function animationSlide() {
+            document.querySelector('.move_icon1').classList.add('aslide1');
+           
+            setTimeout(function() {
+                document.querySelector('.move_icon1').classList.remove("aslide1");
+            }, 1000);
+
+            document.querySelector('.move_icon2').classList.add('aslide2');
+           
+            setTimeout(function() {
+                document.querySelector('.move_icon2').classList.remove("aslide2");
+            }, 1000);
         }
     </script>
 </html>
