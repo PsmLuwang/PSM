@@ -51,6 +51,14 @@
         .emote_box {
             height: 110px;
             width: 350px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .emote_box div {
+            height: 110px;
+        }
+        .emote_box div img {
+            height: 100%;
         }
 
 
@@ -82,17 +90,11 @@
             display: flex;
             flex-direction: row;
             justify-content: center;
+            text-align: center;
+            gap: 40px;
         }
         .you_system div {
             width: 130px;
-        }
-        .you {
-            text-align: right;
-            padding-right: 70px;
-        }
-        .system {
-            text-align: left;
-            padding-left: 70px;
         }
 
 
@@ -120,25 +122,25 @@
             <img class="logo" src="images/logo.jpg">
             <p>Stone Vs Paper Vs Scissore</p>
             
-            <div class="emote_box">
-                <img src="">
-                <img src="">
+            <div id="emote_box" class="emote_box">
+                
             </div>
 
             <div class="compare_box">
                 <p class="resultDisplay">RESULT</p>
                 <div class="compare_sub_box">
-                    <div class="vs_box compare_icon1">
-                        <img class="move_icon1" src="images/PAPER-icon.png">
-                    </div>
-                    <h2>Vs</h2>
                     <div class="vs_box compare_icon2">
                         <img class="move_icon2" src="images/PAPER-icon.png">
                     </div>
+                    <h2>Vs</h2>
+                    <div class="vs_box compare_icon1">
+                        <img class="move_icon1" src="images/PAPER-icon.png">
+                    </div>
                 </div>
                 <div class="you_system">
-                    <div class="you"><p>You</p></div>
+                    
                     <div class="system"><p>System</p></div>
+                    <div class="you"><p>You</p></div>
                 </div>
             </div>
 
@@ -213,12 +215,24 @@
 
             if (result == 'YOU WIN') {
                 document.querySelector('.resultDisplay').innerHTML = `${result} &#x1F929;`;
+                emote_box.innerHTML = `
+                    <div><img src="sad-cat.webp"></div>
+                    <div><img src="happy-dog.webp"></div>
+                `;
             }
             else if (result == 'YOU LOSE') {
                 document.querySelector('.resultDisplay').innerHTML = `${result} &#x1F641;`;
+                emote_box.innerHTML = `
+                    <div><img src="happy-cat.webp"></div>
+                    <div><img src="sad-dog.webp"></div>
+                `;
             }
             else if (result == 'DRAW') {
                 document.querySelector('.resultDisplay').innerHTML = `${result} &#x1F91D;`;
+                emote_box.innerHTML = `
+                    <div><img src="angry-cat.webp"></div>
+                    <div><img src="angry-dog.webp"></div>
+                `;
             }
             
             document.querySelector('.compare_icon1').innerHTML = `<img class="move_icon1" src="images/${choose}-icon.png">`;
