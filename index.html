@@ -86,22 +86,6 @@
             width: 150px
         }
 
-
-
-
-        .you_system {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            text-align: center;
-            gap: 40px;
-        }
-        .you_system div {
-            width: 130px;
-        }
-
-
-
         button {
             background-color: transparent;
             border: 3px solid white;
@@ -136,16 +120,13 @@
                 <div class="compare_sub_box">
                     <div class="vs_box compare_icon2">
                         <img class="move_icon2" src="images/PAPER-icon.png">
+                        <p>System: 0</p>
                     </div>
                     <h2>Vs</h2>
                     <div class="vs_box compare_icon1">
                         <img class="move_icon1" src="images/PAPER-icon.png">
+                        <p>You: 0</p>
                     </div>
-                </div>
-                <div class="you_system">
-                    
-                    <div class="system"><p>System</p></div>
-                    <div class="you"><p>You</p></div>
                 </div>
             </div>
 
@@ -172,6 +153,8 @@
             return system;
         }
 
+        let systemScore = 0;
+        let youScore = 0;
         //onclick function
         function playerMoves(choose) {
             
@@ -218,7 +201,10 @@
                 }
             }
 
+            
+
             if (result == 'YOU WIN') {
+                youScore += 1;
                 document.querySelector('.resultDisplay').innerHTML = `${result} &#x1F929;`;
                 emote_box.innerHTML = `
                     <div><img src="images/sad-cat.webp"></div>
@@ -226,6 +212,7 @@
                 `;
             }
             else if (result == 'YOU LOSE') {
+                systemScore += 1;
                 document.querySelector('.resultDisplay').innerHTML = `${result} &#x1F641;`;
                 emote_box.innerHTML = `
                     <div><img src="images/happy-cat.webp"></div>
@@ -240,8 +227,14 @@
                 `;
             }
             
-            document.querySelector('.compare_icon1').innerHTML = `<img class="move_icon1" src="images/${choose}-icon.png">`;
-            document.querySelector('.compare_icon2').innerHTML = `<img class="move_icon2" src="images/${system}-icon.png">`;
+            document.querySelector('.compare_icon1').innerHTML = `
+                <img class="move_icon1" src="images/${choose}-icon.png">
+                <p>You: ${youScore}</p>
+            `;
+            document.querySelector('.compare_icon2').innerHTML = `
+                <img class="move_icon2" src="images/${system}-icon.png">
+                <p>System: ${systemScore}</p>
+            `;
             
             //animation
             animationSlide();
