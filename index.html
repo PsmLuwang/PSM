@@ -211,7 +211,16 @@
                 }
             }
 
-            document.querySelector('.resultDisplay').innerHTML = `${result}`;
+            if (result == 'YOU WIN') {
+                document.querySelector('.resultDisplay').innerHTML = `${result} &#x1F929;`;
+            }
+            else if (result == 'YOU LOSE') {
+                document.querySelector('.resultDisplay').innerHTML = `${result} &#x1F641;`;
+            }
+            else if (result == 'DRAW') {
+                document.querySelector('.resultDisplay').innerHTML = `${result} &#x1F91D;`;
+            }
+            
             document.querySelector('.compare_icon1').innerHTML = `<img class="move_icon1" src="images/${choose}-icon.png">`;
             document.querySelector('.compare_icon2').innerHTML = `<img class="move_icon2" src="images/${system}-icon.png">`;
             
