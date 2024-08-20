@@ -167,7 +167,12 @@
 
         //onclick function
         function playerMoves(choose) {
-
+            
+            // button click sound
+            const sound = new Audio();
+            sound.src = "mouse-click.mp3";
+            sound.play();
+            
             //computer moves function call
             const system = systeMoves();
 
